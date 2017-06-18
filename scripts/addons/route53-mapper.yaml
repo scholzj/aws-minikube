@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    k8s-app: route53-mapper
+  name: route53-mapper
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: route53-mapper
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: route53-mapper
+  labels:
+    k8s-app: route53-mapper
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: route53-mapper
+subjects:
+- kind: ServiceAccount
+  name: route53-mapper
+  namespace: kube-system
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: route53-mapper
+  namespace: kube-system
+  labels:
+    app: route53-mapper
+    k8s-addon: route53-mapper.addons.k8s.io
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: route53-mapper
+  template:
+    metadata:
+      labels:
+        app: route53-mapper
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod:
+    spec:
+      serviceAccountName: route53-mapper
+      containers:
+        - image: quay.io/molecule/route53-kubernetes:v1.3.0
+          name: route53-mapper
