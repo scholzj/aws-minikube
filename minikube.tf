@@ -142,7 +142,7 @@ export KUBEADM_TOKEN=${data.template_file.kubeadm_token.rendered}
 export DNS_NAME=${var.cluster_name}.${var.hosted_zone}
 export ADDONS="${join(" ", var.addons)}"
 
-curl https://s3.eu-central-1.amazonaws.com/aws-minikube/init-aws-minikube.sh | bash
+curl 	https://s3.amazonaws.com/scholzj-kubernetes/minikube/init-aws-minikube.sh | bash
 EOF
 
     tags = "${merge(map("Name", var.cluster_name, "KubernetesCluster", var.cluster_name), var.tags)}"
