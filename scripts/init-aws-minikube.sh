@@ -7,7 +7,6 @@ set -o pipefail
 
 KUBERNETES_VERSION="1.6.4"
 
-
 # Make DNS lowercase
 DNS_NAME=$(echo "${DNS_NAME}" | tr 'A-Z' 'a-z')
 
