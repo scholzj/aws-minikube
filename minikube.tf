@@ -124,7 +124,7 @@ resource "aws_instance" "minikube" {
 
     ami = "${data.aws_ami_ids.centos7.ids[0]}"
 
-    key_name = "${aws_key_pair.minikube_keypair.name}"
+    key_name = "${aws_key_pair.minikube_keypair.key_name}"
 
     subnet_id = "${var.aws_subnet_id}"
 
@@ -167,7 +167,7 @@ resource "aws_eip_association" "minikube_assoc" {
 
 data "aws_route53_zone" "dns_zone" {
   name         = "${var.hosted_zone}."
-  private_zone = true
+  private_zone = "${var.hosted_zone_private}"
 }
 
 resource "aws_route53_record" "minikube" {

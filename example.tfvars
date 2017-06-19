@@ -11,7 +11,7 @@ aws_instance_type = "t2.medium"
 ssh_public_key = "~/.ssh/id_rsa.pub"
 
 # Subnet ID where the minikube should run
-aws_subnet_id = "subnet-ca9dcca2"
+aws_subnet_id = "subnet-8d3407e5"
 
 # DNS zone where the domain is placed
 hosted_zone = "dbg-devops.com"
