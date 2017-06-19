@@ -4,7 +4,7 @@
         {
             "Effect": "Allow",
             "Action": [
-                "ec2:Describe*",
+                "ec2:*",
                 "elasticloadbalancing:*",
                 "ecr:GetAuthorizationToken",
                 "ecr:BatchCheckLayerAvailability",
