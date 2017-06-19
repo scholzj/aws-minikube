@@ -88,7 +88,7 @@ resource "aws_iam_instance_profile" "minikube_profile" {
 
 resource "aws_key_pair" "minikube_keypair" {
   key_name = "${var.cluster_name}"
-  public_key = "${var.ssh_public_key}"
+  public_key = "${file(var.ssh_public_key)}"
 }
 
 #####

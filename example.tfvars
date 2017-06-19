@@ -27,16 +27,16 @@ tags = {
 
 # Kubernetes Addons
 # Supported addons:
-# https://s3.eu-central-1.amazonaws.com/scholzj-kubernetes/minikube/addons/storage-class.yaml
-# https://s3.eu-central-1.amazonaws.com/scholzj-kubernetes/minikube/addons/heapster.yaml
-# https://s3.eu-central-1.amazonaws.com/scholzj-kubernetes/minikube/addons/dashboard.yaml
-# https://s3.eu-central-1.amazonaws.com/scholzj-kubernetes/minikube/addons/route53-mapper.yaml
-# https://s3.eu-central-1.amazonaws.com/scholzj-kubernetes/minikube/addons/external-dns.yaml
-# https://s3.eu-central-1.amazonaws.com/scholzj-kubernetes/minikube/addons/ingress.yaml"
+# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/storage-class.yaml
+# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/heapster.yaml
+# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/dashboard.yaml
+# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/route53-mapper.yaml
+# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/external-dns.yaml
+# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/ingress.yaml"
 
 addons = [
-  "https://s3.eu-central-1.amazonaws.com/scholzj-kubernetes/minikube/addons/storage-class.yaml",
-  "https://s3.eu-central-1.amazonaws.com/scholzj-kubernetes/minikube/addons/heapster.yaml",
-  "https://s3.eu-central-1.amazonaws.com/scholzj-kubernetes/minikube/addons/dashboard.yaml",
-  "https://s3.eu-central-1.amazonaws.com/scholzj-kubernetes/minikube/addons/external-dns.yaml"
+  "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/storage-class.yaml",
+  "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/heapster.yaml",
+  "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/dashboard.yaml",
+  "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/external-dns.yaml"
 ]
