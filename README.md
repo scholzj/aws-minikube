@@ -2,6 +2,18 @@
 
 AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host and deploys Kubernetes cluster using [Kubeadm](https://kubernetes.io/docs/admin/kubeadm/) tool. Minikube provides full integration with AWS. It is able to handle ELB load balancers, EBS disks, Route53 domains etc.
 
+<!-- TOC -->
+
+- [AWS Minikube](#aws-minikube)
+    - [Prerequisites and dependencies](#prerequisites-and-dependencies)
+    - [Configuration](#configuration)
+    - [Creating AWS Minikube](#creating-aws-minikube)
+    - [Deleting AWS Minikube](#deleting-aws-minikube)
+    - [Addons](#addons)
+    - [Custom addons](#custom-addons)
+
+<!-- /TOC -->
+
 ## Prerequisites and dependencies
 
 * AWS Minikube deployes into existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration to create one.
@@ -51,4 +63,8 @@ Currently, following addons are supported:
 * External DNS (Replaces Route53 mapper)
 * Ingress
 
-The addons will be installed automatically based on the Terraform variables.
+The addons will be installed automatically based on the Terraform variables. 
+
+## Custom addons
+
+Custom addons can be added if needed. Fro every URL in the `addons` list, the initialization scripts will automatically call `kubectl -f apply <Addon URL>` to deploy it.
