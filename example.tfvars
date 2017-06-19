@@ -2,7 +2,7 @@
 aws_region    = "eu-central-1"
 
 # Name for role, policy and cloud formation stack (without DBG-DEV- prefix)
-cluster_name  = "en341-aws-minikube"
+cluster_name  = "my-minikube"
 
 # Instance type
 aws_instance_type = "t2.medium"
@@ -11,17 +11,14 @@ aws_instance_type = "t2.medium"
 ssh_public_key = "~/.ssh/id_rsa.pub"
 
 # Subnet ID where the minikube should run
-aws_subnet_id = "subnet-8d3407e5"
+aws_subnet_id = "subnet-8a3517f8"
 
 # DNS zone where the domain is placed
-hosted_zone = "dbg-devops.com"
+hosted_zone = "my-domain.com"
 hosted_zone_private = false
 
 # Tags
 tags = {
-  Product     = "Risk"
-  CostCenter  = "665050"
-  Creator     = "en341"
   Application = "Minikube"
 }
 
