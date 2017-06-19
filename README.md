@@ -41,7 +41,7 @@ To delete AWS Minikube,
 terraform destroy --var-file example.tfvars
 ```
 
-## Addons
+## Addons
 
 Currently, following addons are supported:
 * Kubernetes dashboard
