@@ -11,6 +11,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
     - [Deleting AWS Minikube](#deleting-aws-minikube)
     - [Addons](#addons)
     - [Custom addons](#custom-addons)
+    - [Tagging](#tagging)
 
 <!-- /TOC -->
 
@@ -68,3 +69,7 @@ The addons will be installed automatically based on the Terraform variables.
 ## Custom addons
 
 Custom addons can be added if needed. Fro every URL in the `addons` list, the initialization scripts will automatically call `kubectl -f apply <Addon URL>` to deploy it. Minikube is using RBAC. So the custom addons have to be *RBAC ready*.
+
+## Tagging
+
+If you need to tag resources created by your Kubernetes cluster (EBS volumes, ELB load balancers etc.) check t[his AWS Lambda function which can do the tagging](https://github.com/scholzj/aws-kubernetes-tagging-lambda).
