@@ -1,6 +1,6 @@
 # AWS Minikube
 
-AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host and deploys Kubernetes cluster using [Kubeadm](https://kubernetes.io/docs/admin/kubeadm/) tool. Minikube provides full integration with AWS. It is able to handle ELB load balancers, EBS disks, Route53 domains etc.
+AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host and deploys Kubernetes cluster using [Kubeadm](https://kubernetes.io/docs/admin/kubeadm/) tool. It provides full integration with AWS. It is able to handle ELB load balancers, EBS disks, Route53 domains etc.
 
 <!-- TOC -->
 
