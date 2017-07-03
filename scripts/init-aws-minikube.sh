@@ -51,6 +51,8 @@ cloudProvider: aws
 kubernetesVersion: v${KUBERNETES_VERSION}
 apiServerCertSANs:
 - ${DNS_NAME}
+authorizationModes:
+- RBAC
 EOF
 
 kubeadm reset
