@@ -5,7 +5,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-KUBERNETES_VERSION="1.6.6"
+KUBERNETES_VERSION="1.7.0"
 
 # Make DNS lowercase
 DNS_NAME=$(echo "${DNS_NAME}" | tr 'A-Z' 'a-z')
@@ -31,6 +31,7 @@ setenforce 0
 yum install -y kubelet-${KUBERNETES_VERSION} kubeadm-${KUBERNETES_VERSION} kubernetes-cni
 
 # Fix kubelet configuration
+sed -i 's/--kubeconfig=/etc/kubernetes/kubelet.conf/--kubeconfig=/etc/kubernetes/admin.conf/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 sed -i 's/--cgroup-driver=systemd/--cgroup-driver=cgroupfs/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 sed -i '/Environment="KUBELET_CGROUP_ARGS/i Environment="KUBELET_CLOUD_ARGS=--cloud-provider=aws"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 sed -i 's/$KUBELET_CGROUP_ARGS/$KUBELET_CLOUD_ARGS $KUBELET_CGROUP_ARGS/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
