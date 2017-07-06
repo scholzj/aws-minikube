@@ -154,6 +154,14 @@ EOF
     }
 
     depends_on = ["data.template_file.kubeadm_token"]
+
+    lifecycle {
+      ignore_changes = [
+        "ami",
+        "user_data",
+        "associate_public_ip_address"
+      ]
+    }
 }
 
 resource "aws_eip_association" "minikube_assoc" {
