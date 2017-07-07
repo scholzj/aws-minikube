@@ -5,7 +5,10 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-KUBERNETES_VERSION="1.6.6"
+KUBERNETES_VERSION="1.7.0"
+
+# Set fully qualified hostname
+hostname $(hostname -f)
 
 # Make DNS lowercase
 DNS_NAME=$(echo "${DNS_NAME}" | tr 'A-Z' 'a-z')
