@@ -8,6 +8,7 @@ set -o pipefail
 KUBERNETES_VERSION="1.7.0"
 
 # Set fully qualified hostname
+# This is needed to match the hostname expected by kubeadm an the hostname used by kubelet
 hostname $(hostname -f)
 
 # Make DNS lowercase
