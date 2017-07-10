@@ -71,8 +71,9 @@ spec:
       # This, along with the annotation above marks this pod as a critical add-on.
       - key: CriticalAddonsOnly
         operator: Exists
-      nodeSelector:
-        node-role.kubernetes.io/master: ""
+      # Minikube is single node and doesn't have a real master
+      #nodeSelector:
+      #  node-role.kubernetes.io/master: ""
       hostNetwork: true
       containers:
         - name: calico-etcd
