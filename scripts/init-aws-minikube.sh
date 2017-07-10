@@ -2,12 +2,14 @@
 
 set -o verbose
 set -o errexit
-set -o nounset
 set -o pipefail
 
 if [ -z "$KUBERNETES_VERSION" ]; then
   KUBERNETES_VERSION="1.7.0"
 fi
+
+# Set this only after setting the defaults
+set -o nounset
 
 # Set fully qualified hostname
 # This is needed to match the hostname expected by kubeadm an the hostname used by kubelet
