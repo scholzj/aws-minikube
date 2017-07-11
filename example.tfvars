@@ -29,7 +29,8 @@ tags = {
 # https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/dashboard.yaml
 # https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/route53-mapper.yaml
 # https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/external-dns.yaml
-# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/ingress.yaml"
+# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/ingress.yaml" (External ELB load balancer)
+# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/ingress-internal.yaml" (Internal ELB loadbalancer)
 
 addons = [
   "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/storage-class.yaml",
