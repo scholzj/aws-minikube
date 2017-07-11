@@ -8,6 +8,10 @@ if [ -z "$KUBERNETES_VERSION" ]; then
   KUBERNETES_VERSION="1.7.0"
 fi
 
+if [ -z "$CLUSTER_NAME" ]; then
+  CLUSTER_NAME="aws-minikube"
+fi
+
 # Set this only after setting the defaults
 set -o nounset
 
@@ -19,7 +23,7 @@ hostname $(hostname -f)
 DNS_NAME=$(echo "${DNS_NAME}" | tr 'A-Z' 'a-z')
 
 # Install docker
-yum install -y yum-utils device-mapper-persistent-data lvm2
+yum install -y yum-utils curl gettext > device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum makecache fast
 yum install -y docker-ce
@@ -92,5 +96,7 @@ chmod 0600 $KUBECONFIG_OUTPUT
 # Load addons
 for ADDON in $ADDONS
 do
-  kubectl apply -f $ADDON
+  curl $ADDON | envsubst > /tmp/addon.yaml
+  kubectl apply -f /tmp/addon.yaml
+  rm /tmp/addon.yaml
 done

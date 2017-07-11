@@ -140,6 +140,7 @@ resource "aws_instance" "minikube" {
 #!/bin/bash
 export KUBEADM_TOKEN=${data.template_file.kubeadm_token.rendered}
 export DNS_NAME=${var.cluster_name}.${var.hosted_zone}
+export CLUSTER_NAME=${var.cluster_name}
 export ADDONS="${join(" ", var.addons)}"
 
 curl 	https://s3.amazonaws.com/scholzj-kubernetes/minikube/init-aws-minikube.sh | bash
