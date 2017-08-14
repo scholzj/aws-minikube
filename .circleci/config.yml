@@ -1,8 +1,8 @@
 version: 2
 jobs:
   s3_upload:
-    #docker:
-    #  - image: docker:17.06.0-git
+    docker:
+      - image: circleci/python:latest
     steps:
       - checkout
       - run:
