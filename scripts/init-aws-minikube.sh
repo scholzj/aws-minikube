@@ -5,7 +5,7 @@ set -o errexit
 set -o pipefail
 
 if [ -z "$KUBERNETES_VERSION" ]; then
-  KUBERNETES_VERSION="1.7.0"
+  KUBERNETES_VERSION="1.7.3"
 fi
 
 if [ -z "$CLUSTER_NAME" ]; then
@@ -46,6 +46,10 @@ yum install -y kubelet-${KUBERNETES_VERSION} kubeadm-${KUBERNETES_VERSION} kuber
 sed -i 's/--cgroup-driver=systemd/--cgroup-driver=cgroupfs/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 sed -i '/Environment="KUBELET_CGROUP_ARGS/i Environment="KUBELET_CLOUD_ARGS=--cloud-provider=aws"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 sed -i 's/$KUBELET_CGROUP_ARGS/$KUBELET_CLOUD_ARGS $KUBELET_CGROUP_ARGS/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+# Set settings needed by Docker
+sysctl net.bridge.bridge-nf-call-iptables=1
+sysctl net.bridge.bridge-nf-call-ip6tables=1
 
 # Start services
 systemctl enable docker
