@@ -1,9 +1,0 @@
-test:
-  override:
-    - echo "Passed"
-
-deployment:
-  staging:
-    branch: master
-    commands:
-      - aws s3 cp scripts/ s3://scholzj-kubernetes/minikube/ --recursive --acl public-read
