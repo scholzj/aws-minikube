@@ -47,15 +47,15 @@ sed -i 's/--cgroup-driver=systemd/--cgroup-driver=cgroupfs/g' /etc/systemd/syste
 sed -i '/Environment="KUBELET_CGROUP_ARGS/i Environment="KUBELET_CLOUD_ARGS=--cloud-provider=aws"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 sed -i 's/$KUBELET_CGROUP_ARGS/$KUBELET_CLOUD_ARGS $KUBELET_CGROUP_ARGS/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 
-# Set settings needed by Docker
-sysctl net.bridge.bridge-nf-call-iptables=1
-sysctl net.bridge.bridge-nf-call-ip6tables=1
-
 # Start services
 systemctl enable docker
 systemctl start docker
 systemctl enable kubelet
 systemctl start kubelet
+
+# Set settings needed by Docker
+sysctl net.bridge.bridge-nf-call-iptables=1
+sysctl net.bridge.bridge-nf-call-ip6tables=1
 
 # Initialize the master
 cat >/tmp/kubeadm.yaml <<EOF
