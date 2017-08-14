@@ -8,9 +8,6 @@ jobs:
       - run:
           name: Install AWS-CLI
           command: sudo pip install awscli
-      - run:
-          name: Run tests
-          command: echo "Not implemented (yet?)"
       - deploy:
           name: Deploy to S3 if tests pass and branch is Master
           command: |
