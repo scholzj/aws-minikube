@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Install AWS-CLI
-          command: pip install awscli
+          command: sudo pip install awscli
       - run:
           name: Run tests
           command: echo "Not implemented (yet?)"
