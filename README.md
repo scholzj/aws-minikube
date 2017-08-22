@@ -5,6 +5,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
 <!-- TOC -->
 
 - [AWS Minikube](#aws-minikube)
+    - [Updates](#updates)
     - [Prerequisites and dependencies](#prerequisites-and-dependencies)
     - [Configuration](#configuration)
     - [Creating AWS Minikube](#creating-aws-minikube)
@@ -14,6 +15,10 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
     - [Tagging](#tagging)
 
 <!-- /TOC -->
+
+## Updates
+
+* *22.8.2017:* Update to Kubeadm and Kubernetes 1.7.4
 
 ## Prerequisites and dependencies
 
