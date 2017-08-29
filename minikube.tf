@@ -10,7 +10,7 @@ resource "aws_security_group" "minikube" {
   vpc_id = "${data.aws_subnet.minikube_subnet.vpc_id}"
   name = "${var.cluster_name}"
 
-  tags = "${merge(map("Name", var.cluster_name, "KubernetesCluster", var.cluster_name), var.tags)}"
+  tags = "${merge(map("Name", var.cluster_name, format("kubernetes.io/cluster/%v", var.cluster_name), "owned"), var.tags)}"
 
   ingress {
     from_port = 22
@@ -146,7 +146,7 @@ export ADDONS="${join(" ", var.addons)}"
 curl 	https://s3.amazonaws.com/scholzj-kubernetes/minikube/init-aws-minikube.sh | bash
 EOF
 
-    tags = "${merge(map("Name", var.cluster_name, "KubernetesCluster", var.cluster_name), var.tags)}"
+    tags = "${merge(map("Name", var.cluster_name, format("kubernetes.io/cluster/%v", var.cluster_name), "owned"), var.tags)}"
 
     root_block_device {
         volume_type = "gp2"
