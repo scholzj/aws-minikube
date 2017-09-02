@@ -2,3 +2,5 @@
 *.tfstate
 *.tfstate.backup
 *.tfstate.*.backup
+.terraform
+jakub.tfvars
