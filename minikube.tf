@@ -201,5 +201,5 @@ output "copy_config_dns" {
 }
 
 output "copy_config_ip" {
-    value = "To copy the kubectl config file using IP address, run: 'scp centos@${aws_eip.minikube.public_ip}:/home/centos/kubeconfig .'"
+    value = "To copy the kubectl config file using IP address, run: 'scp centos@${aws_eip.minikube.public_ip}:/home/centos/kubeconfig_ip .'"
 }
