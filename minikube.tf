@@ -140,6 +140,7 @@ resource "aws_instance" "minikube" {
 #!/bin/bash
 export KUBEADM_TOKEN=${data.template_file.kubeadm_token.rendered}
 export DNS_NAME=${var.cluster_name}.${var.hosted_zone}
+export IP_ADDRESS=${aws_eip.minikube.public_ip}
 export CLUSTER_NAME=${var.cluster_name}
 export ADDONS="${join(" ", var.addons)}"
 
@@ -195,6 +196,10 @@ output "minikube_dns" {
     value = "${aws_route53_record.minikube.fqdn}"
 }
 
-output "copy_config" {
-    value = "To copy the kubectl config file, run: 'scp centos@${aws_route53_record.minikube.fqdn}:/home/centos/kubeconfig .'"
+output "copy_config_dns" {
+    value = "To copy the kubectl config file using DNS record, run: 'scp centos@${aws_route53_record.minikube.fqdn}:/home/centos/kubeconfig .'"
+}
+
+output "copy_config_ip" {
+    value = "To copy the kubectl config file using IP address, run: 'scp centos@${aws_eip.minikube.public_ip}:/home/centos/kubeconfig .'"
 }
