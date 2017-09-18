@@ -18,6 +18,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
 
 ## Updates
 
+* *18.9.2017:* Clarify the requirements for AWS infrastructure
 * *11.9.2017:* Make it possible to connect to the cluster through the Elastic IP address instead of DNS name
 * *2.9.2017:* Update to Kubeadm and Kubernetes 1.7.5
 * *22.8.2017:* Update to Kubeadm and Kubernetes 1.7.4
@@ -26,6 +27,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
 
 * AWS Minikube deployes into existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration to create one.
   * The VPC / subnet should be properly linked with Internet Gateway (IGW) and should have DNS and DHCP enabled.
+  * Hosted DNS zone configured in Route53 (in case the zone is private you have to use IP address to copy `kubeconfig` and access the cluster).
 * To deploy AWS Minikube there are no other dependencies apart from [Terraform](https://www.terraform.io). Kubeadm is used only on the EC2 host and doesn't have to be installed locally.
 
 ## Configuration
