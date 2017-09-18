@@ -25,6 +25,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
 ## Prerequisites and dependencies
 
 * AWS Minikube deployes into existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration to create one.
+  * The VPC / subnet should be properly linked with Internet Gateway (IGW) and should have DNS and DHCP enabled.
 * To deploy AWS Minikube there are no other dependencies apart from [Terraform](https://www.terraform.io). Kubeadm is used only on the EC2 host and doesn't have to be installed locally.
 
 ## Configuration
