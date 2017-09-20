@@ -4,13 +4,12 @@ set -o verbose
 set -o errexit
 set -o pipefail
 
-if [ -z "$KUBERNETES_VERSION" ]; then
-  KUBERNETES_VERSION="1.7.5"
-fi
-
-if [ -z "$CLUSTER_NAME" ]; then
-  CLUSTER_NAME="aws-minikube"
-fi
+export KUBEADM_TOKEN=${kubeadm_token}
+export DNS_NAME=${dns_name}
+export IP_ADDRESS=${ip_address}
+export CLUSTER_NAME=${cluster_name}
+export ADDONS="${addons}"
+export KUBERNETES_VERSION="1.7.5"
 
 # Set this only after setting the defaults
 set -o nounset
@@ -20,7 +19,7 @@ set -o nounset
 hostname $(hostname -f)
 
 # Make DNS lowercase
-DNS_NAME=$(echo "${DNS_NAME}" | tr 'A-Z' 'a-z')
+DNS_NAME=$(echo "$DNS_NAME" | tr 'A-Z' 'a-z')
 
 # Install docker
 yum install -y yum-utils curl gettext > device-mapper-persistent-data lvm2
@@ -40,7 +39,7 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
         https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
 setenforce 0
-yum install -y kubelet-${KUBERNETES_VERSION} kubeadm-${KUBERNETES_VERSION} kubernetes-cni
+yum install -y kubelet-$KUBERNETES_VERSION kubeadm-$KUBERNETES_VERSION kubernetes-cni
 
 # Fix kubelet configuration
 sed -i 's/--cgroup-driver=systemd/--cgroup-driver=cgroupfs/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
@@ -62,12 +61,12 @@ cat >/tmp/kubeadm.yaml <<EOF
 ---
 apiVersion: kubeadm.k8s.io/v1alpha1
 kind: MasterConfiguration
-token: ${KUBEADM_TOKEN}
+token: $KUBEADM_TOKEN
 cloudProvider: aws
-kubernetesVersion: v${KUBERNETES_VERSION}
+kubernetesVersion: v$KUBERNETES_VERSION
 apiServerCertSANs:
-- ${DNS_NAME}
-- ${IP_ADDRESS}
+- $DNS_NAME
+- $IP_ADDRESS
 EOF
 
 kubeadm reset
@@ -93,7 +92,7 @@ kubectl create clusterrolebinding admin-cluster-binding --clusterrole=cluster-ad
 export KUBECONFIG_OUTPUT=/home/centos/kubeconfig
 kubeadm alpha phase kubeconfig client-certs \
   --client-name admin \
-  --server "https://${DNS_NAME}:6443" \
+  --server "https://$DNS_NAME:6443" \
   > $KUBECONFIG_OUTPUT
 chown centos:centos $KUBECONFIG_OUTPUT
 chmod 0600 $KUBECONFIG_OUTPUT
@@ -102,7 +101,7 @@ chmod 0600 $KUBECONFIG_OUTPUT
 export KUBECONFIG_OUTPUT=/home/centos/kubeconfig_ip
 kubeadm alpha phase kubeconfig client-certs \
   --client-name admin \
-  --server "https://${IP_ADDRESS}:6443" \
+  --server "https://$IP_ADDRESS:6443" \
   > $KUBECONFIG_OUTPUT
 chown centos:centos $KUBECONFIG_OUTPUT
 chmod 0600 $KUBECONFIG_OUTPUT

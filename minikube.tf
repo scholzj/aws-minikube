@@ -83,6 +83,123 @@ resource "aws_iam_instance_profile" "minikube_profile" {
 }
 
 ##########
+# Bootstraping scripts
+##########
+
+data "template_file" "init_minikube" {
+  template = "${file("${path.module}/scripts/init-aws-minikube.sh")}"
+
+  vars {
+    kubeadm_token = "${data.template_file.kubeadm_token.rendered}"
+    dns_name = "${var.cluster_name}.${var.hosted_zone}"
+    ip_address = "${aws_eip.minikube.public_ip}"
+    cluster_name = "${var.cluster_name}"
+    addons = "${join(" ", var.addons)}"
+  }
+}
+
+data "template_file" "calico" {
+  template = "${file("${path.module}/scripts/calico.yaml")}"
+
+  vars {}
+}
+
+data "template_file" "dashboard" {
+  template = "${file("${path.module}/scripts/addons/dashboard.yaml")}"
+
+  vars {}
+}
+
+data "template_file" "external_dns" {
+  template = "${file("${path.module}/scripts/addons/external-dns.yaml")}"
+
+  vars {}
+}
+
+data "template_file" "heapster" {
+  template = "${file("${path.module}/scripts/addons/heapster.yaml")}"
+
+  vars {}
+}
+
+data "template_file" "ingress" {
+  template = "${file("${path.module}/scripts/addons/ingress.yaml")}"
+
+  vars {}
+}
+
+data "template_file" "route53_mapper" {
+  template = "${file("${path.module}/scripts/addons/route53-mapper.yaml")}"
+
+  vars {}
+}
+
+data "template_file" "storage_class" {
+  template = "${file("${path.module}/scripts/addons/storage-class.yaml")}"
+
+  vars {}
+}
+
+data "template_cloudinit_config" "minikube_cloud_init" {
+  gzip          = true
+  base64_encode = true
+
+  part {
+    filename     = "init-aws-minikube.sh"
+    content_type = "text/x-shellscript"
+    content      = "${data.template_file.init_minikube.rendered}"
+  }
+
+  part {
+    filename     = "calico.yaml"
+    content_type = "text/yaml"
+    content      = "${data.template_file.calico.rendered}"
+  }
+
+  part {
+    filename     = "dashboard.yaml"
+    content_type = "text/yaml"
+    content      = "${data.template_file.dashboard.rendered}"
+  }
+
+  part {
+    filename     = "dashboard.yaml"
+    content_type = "text/yaml"
+    content      = "${data.template_file.dashboard.rendered}"
+  }
+
+  part {
+    filename     = "external-dns.yaml"
+    content_type = "text/yaml"
+    content      = "${data.template_file.external_dns.rendered}"
+  }
+
+  part {
+    filename     = "heapster.yaml"
+    content_type = "text/yaml"
+    content      = "${data.template_file.heapster.rendered}"
+  }
+
+  part {
+    filename     = "ingress.yaml"
+    content_type = "text/yaml"
+    content      = "${data.template_file.ingress.rendered}"
+  }
+
+  part {
+    filename     = "route53-mapper.yaml"
+    content_type = "text/yaml"
+    content      = "${data.template_file.route53_mapper.rendered}"
+  }
+
+  part {
+    filename     = "storage-class.yaml"
+    content_type = "text/yaml"
+    content      = "${data.template_file.storage_class.rendered}"
+  }
+}
+
+##########
 # Keypair
 ##########
 
@@ -136,16 +253,7 @@ resource "aws_instance" "minikube" {
 
     iam_instance_profile = "${aws_iam_instance_profile.minikube_profile.name}"
 
-    user_data = <<EOF
-#!/bin/bash
-export KUBEADM_TOKEN=${data.template_file.kubeadm_token.rendered}
-export DNS_NAME=${var.cluster_name}.${var.hosted_zone}
-export IP_ADDRESS=${aws_eip.minikube.public_ip}
-export CLUSTER_NAME=${var.cluster_name}
-export ADDONS="${join(" ", var.addons)}"
-
-curl 	https://s3.amazonaws.com/scholzj-kubernetes/minikube/init-aws-minikube.sh | bash
-EOF
+    user_data = "${data.template_cloudinit_config.minikube_cloud_init.rendered}"
 
     tags = "${merge(map("Name", var.cluster_name, format("kubernetes.io/cluster/%v", var.cluster_name), "owned"), var.tags)}"
 
