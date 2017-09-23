@@ -99,12 +99,7 @@ data "template_file" "init_minikube" {
 }
 
 data "template_file" "cloud-init-config" {
-    template = "write_files:
--   encoding: gz+b64
-    content: ${calico_yaml}
-    owner: root:root
-    path: /tmp/calico.yaml
-    permissions: '0664'"
+    template = "${file("${path.module}/scripts/cloud-init-config.yaml")}"
 
     vars {
         calico_yaml = "${base64gzip("${file("${path.module}/scripts/calico.yaml")}")}"
