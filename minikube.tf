@@ -98,46 +98,17 @@ data "template_file" "init_minikube" {
   }
 }
 
-data "template_file" "calico" {
-  template = "${file("${path.module}/scripts/calico.yaml")}"
+data "template_file" "cloud-init-config" {
+    template = "write_files:
+-   encoding: gz+b64
+    content: ${calico_yaml}
+    owner: root:root
+    path: /tmp/calico.yaml
+    permissions: '0664'"
 
-  vars {}
-}
-
-data "template_file" "dashboard" {
-  template = "${file("${path.module}/scripts/addons/dashboard.yaml")}"
-
-  vars {}
-}
-
-data "template_file" "external_dns" {
-  template = "${file("${path.module}/scripts/addons/external-dns.yaml")}"
-
-  vars {}
-}
-
-data "template_file" "heapster" {
-  template = "${file("${path.module}/scripts/addons/heapster.yaml")}"
-
-  vars {}
-}
-
-data "template_file" "ingress" {
-  template = "${file("${path.module}/scripts/addons/ingress.yaml")}"
-
-  vars {}
-}
-
-data "template_file" "route53_mapper" {
-  template = "${file("${path.module}/scripts/addons/route53-mapper.yaml")}"
-
-  vars {}
-}
-
-data "template_file" "storage_class" {
-  template = "${file("${path.module}/scripts/addons/storage-class.yaml")}"
-
-  vars {}
+    vars {
+        calico_yaml = "${base64gzip("${file("${path.module}/scripts/calico.yaml")}")}"
+    }
 }
 
 data "template_cloudinit_config" "minikube_cloud_init" {
@@ -145,57 +116,15 @@ data "template_cloudinit_config" "minikube_cloud_init" {
   base64_encode = true
 
   part {
+    filename     = "cloud-init-config.yaml"
+    content_type = "text/cloud-config"
+    content      = "${data.template_file.cloud-init-config.rendered}"
+  }
+
+  part {
     filename     = "init-aws-minikube.sh"
     content_type = "text/x-shellscript"
     content      = "${data.template_file.init_minikube.rendered}"
-  }
-
-  part {
-    filename     = "calico.yaml"
-    content_type = "text/yaml"
-    content      = "${data.template_file.calico.rendered}"
-  }
-
-  part {
-    filename     = "dashboard.yaml"
-    content_type = "text/yaml"
-    content      = "${data.template_file.dashboard.rendered}"
-  }
-
-  part {
-    filename     = "dashboard.yaml"
-    content_type = "text/yaml"
-    content      = "${data.template_file.dashboard.rendered}"
-  }
-
-  part {
-    filename     = "external-dns.yaml"
-    content_type = "text/yaml"
-    content      = "${data.template_file.external_dns.rendered}"
-  }
-
-  part {
-    filename     = "heapster.yaml"
-    content_type = "text/yaml"
-    content      = "${data.template_file.heapster.rendered}"
-  }
-
-  part {
-    filename     = "ingress.yaml"
-    content_type = "text/yaml"
-    content      = "${data.template_file.ingress.rendered}"
-  }
-
-  part {
-    filename     = "route53-mapper.yaml"
-    content_type = "text/yaml"
-    content      = "${data.template_file.route53_mapper.rendered}"
-  }
-
-  part {
-    filename     = "storage-class.yaml"
-    content_type = "text/yaml"
-    content      = "${data.template_file.storage_class.rendered}"
   }
 }
 

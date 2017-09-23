@@ -77,7 +77,7 @@ rm /tmp/kubeadm.yaml
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
 # Install calico
-kubectl apply -f https://s3.amazonaws.com/scholzj-kubernetes/minikube/calico.yaml
+kubectl apply -f /tmp/calico.yaml
 
 # Allow all apps to run on master
 kubectl taint nodes --all node-role.kubernetes.io/master-

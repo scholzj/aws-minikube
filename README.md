@@ -43,7 +43,7 @@ The configuration is done through Terraform variables. Example *tfvars* file is 
 | `aws_subnet_id` | Subnet ID where minikube should run | `subnet-8d3407e5` |
 | `hosted_zone` | DNS zone which should be used | `my-domain.com` |
 | `hosted_zone_private` | Is the DNS zone public or ptivate | `false` |
-| `addons` | List of addons which should be installed | `[ "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/storage-class.yaml" ]` |
+| `addons` | List of addons which should be installed | `[ "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml" ]` |
 | `tags` | Tags which should be applied to all resources | `{ Hello = "World" }` |
 
 ## Creating AWS Minikube
@@ -82,4 +82,4 @@ Custom addons can be added if needed. Fro every URL in the `addons` list, the in
 
 ## Tagging
 
-If you need to tag resources created by your Kubernetes cluster (EBS volumes, ELB load balancers etc.) check t[his AWS Lambda function which can do the tagging](https://github.com/scholzj/aws-kubernetes-tagging-lambda).
+If you need to tag resources created by your Kubernetes cluster (EBS volumes, ELB load balancers etc.) check [this AWS Lambda function which can do the tagging](https://github.com/scholzj/aws-kubernetes-tagging-lambda).
