@@ -18,6 +18,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
 
 ## Updates
 
+* *23.9.2017:* Bootstrap cluster purely through cloud init to skip AWS S3
 * *18.9.2017:* Clarify the requirements for AWS infrastructure
 * *11.9.2017:* Make it possible to connect to the cluster through the Elastic IP address instead of DNS name
 * *2.9.2017:* Update to Kubeadm and Kubernetes 1.7.5
@@ -43,7 +44,7 @@ The configuration is done through Terraform variables. Example *tfvars* file is 
 | `aws_subnet_id` | Subnet ID where minikube should run | `subnet-8d3407e5` |
 | `hosted_zone` | DNS zone which should be used | `my-domain.com` |
 | `hosted_zone_private` | Is the DNS zone public or ptivate | `false` |
-| `addons` | List of addons which should be installed | `[ "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/storage-class.yaml" ]` |
+| `addons` | List of addons which should be installed | `[ "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml" ]` |
 | `tags` | Tags which should be applied to all resources | `{ Hello = "World" }` |
 
 ## Creating AWS Minikube
@@ -82,4 +83,4 @@ Custom addons can be added if needed. Fro every URL in the `addons` list, the in
 
 ## Tagging
 
-If you need to tag resources created by your Kubernetes cluster (EBS volumes, ELB load balancers etc.) check t[his AWS Lambda function which can do the tagging](https://github.com/scholzj/aws-kubernetes-tagging-lambda).
+If you need to tag resources created by your Kubernetes cluster (EBS volumes, ELB load balancers etc.) check [this AWS Lambda function which can do the tagging](https://github.com/scholzj/aws-kubernetes-tagging-lambda).

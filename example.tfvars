@@ -24,17 +24,18 @@ tags = {
 
 # Kubernetes Addons
 # Supported addons:
-# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/storage-class.yaml
-# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/heapster.yaml
-# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/dashboard.yaml
-# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/route53-mapper.yaml
-# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/external-dns.yaml
-# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/ingress.yaml" (External ELB load balancer)
-# https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/ingress-internal.yaml" (Internal ELB loadbalancer)
+# 
+# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml
+# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//heapster.yaml
+# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//dashboard.yaml
+# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//route53-mapper.yaml
+# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//external-dns.yaml
+# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//ingress.yaml" (External ELB load balancer)
+# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//ingress-internal.yaml" (Internal ELB loadbalancer)
 
 addons = [
-  "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/storage-class.yaml",
-  "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/heapster.yaml",
-  "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/dashboard.yaml",
-  "https://s3.amazonaws.com/scholzj-kubernetes/minikube/addons/external-dns.yaml"
+  "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml",
+  "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//heapster.yaml",
+  "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//dashboard.yaml",
+  "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//external-dns.yaml"
 ]

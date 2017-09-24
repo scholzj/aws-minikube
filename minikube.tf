@@ -83,6 +83,47 @@ resource "aws_iam_instance_profile" "minikube_profile" {
 }
 
 ##########
+# Bootstraping scripts
+##########
+
+data "template_file" "init_minikube" {
+  template = "${file("${path.module}/scripts/init-aws-minikube.sh")}"
+
+  vars {
+    kubeadm_token = "${data.template_file.kubeadm_token.rendered}"
+    dns_name = "${var.cluster_name}.${var.hosted_zone}"
+    ip_address = "${aws_eip.minikube.public_ip}"
+    cluster_name = "${var.cluster_name}"
+    addons = "${join(" ", var.addons)}"
+  }
+}
+
+data "template_file" "cloud-init-config" {
+    template = "${file("${path.module}/scripts/cloud-init-config.yaml")}"
+
+    vars {
+        calico_yaml = "${base64gzip("${file("${path.module}/scripts/calico.yaml")}")}"
+    }
+}
+
+data "template_cloudinit_config" "minikube_cloud_init" {
+  gzip          = true
+  base64_encode = true
+
+  part {
+    filename     = "cloud-init-config.yaml"
+    content_type = "text/cloud-config"
+    content      = "${data.template_file.cloud-init-config.rendered}"
+  }
+
+  part {
+    filename     = "init-aws-minikube.sh"
+    content_type = "text/x-shellscript"
+    content      = "${data.template_file.init_minikube.rendered}"
+  }
+}
+
+##########
 # Keypair
 ##########
 
@@ -136,16 +177,7 @@ resource "aws_instance" "minikube" {
 
     iam_instance_profile = "${aws_iam_instance_profile.minikube_profile.name}"
 
-    user_data = <<EOF
-#!/bin/bash
-export KUBEADM_TOKEN=${data.template_file.kubeadm_token.rendered}
-export DNS_NAME=${var.cluster_name}.${var.hosted_zone}
-export IP_ADDRESS=${aws_eip.minikube.public_ip}
-export CLUSTER_NAME=${var.cluster_name}
-export ADDONS="${join(" ", var.addons)}"
-
-curl 	https://s3.amazonaws.com/scholzj-kubernetes/minikube/init-aws-minikube.sh | bash
-EOF
+    user_data = "${data.template_cloudinit_config.minikube_cloud_init.rendered}"
 
     tags = "${merge(map("Name", var.cluster_name, format("kubernetes.io/cluster/%v", var.cluster_name), "owned"), var.tags)}"
 
