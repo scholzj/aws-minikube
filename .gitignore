@@ -4,3 +4,4 @@
 *.tfstate.*.backup
 .terraform
 jakub.tfvars
+kubeconfig*
