@@ -25,17 +25,17 @@ tags = {
 # Kubernetes Addons
 # Supported addons:
 # 
-# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml
-# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//heapster.yaml
-# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//dashboard.yaml
-# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//route53-mapper.yaml
-# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//external-dns.yaml
-# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//ingress.yaml" (External ELB load balancer)
-# https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//ingress-internal.yaml" (Internal ELB loadbalancer)
+# https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/storage-class.yaml
+# https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/heapster.yaml
+# https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml
+# https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/route53-mapper.yaml
+# https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml
+# https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/ingress.yaml" (External ELB load balancer)
+# https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/ingress-internal.yaml" (Internal ELB loadbalancer)
 
 addons = [
-  "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml",
-  "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//heapster.yaml",
-  "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//dashboard.yaml",
-  "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//external-dns.yaml"
+  "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/storage-class.yaml",
+  "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/heapster.yaml",
+  "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml",
+  "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml"
 ]
