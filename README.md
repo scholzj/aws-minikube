@@ -2,17 +2,18 @@
 
 AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host and deploys Kubernetes cluster using [Kubeadm](https://kubernetes.io/docs/admin/kubeadm/) tool. It provides full integration with AWS. It is able to handle ELB load balancers, EBS disks, Route53 domains etc.
 
-<!-- TOC -->
+<!-- TOC depthFrom:2 -->
 
-- [AWS Minikube](#aws-minikube)
-    - [Updates](#updates)
-    - [Prerequisites and dependencies](#prerequisites-and-dependencies)
-    - [Configuration](#configuration)
-    - [Creating AWS Minikube](#creating-aws-minikube)
-    - [Deleting AWS Minikube](#deleting-aws-minikube)
-    - [Addons](#addons)
-    - [Custom addons](#custom-addons)
-    - [Tagging](#tagging)
+- [Updates](#updates)
+- [Prerequisites and dependencies](#prerequisites-and-dependencies)
+- [Configuration](#configuration)
+- [Creating AWS Minikube](#creating-aws-minikube)
+- [Deleting AWS Minikube](#deleting-aws-minikube)
+- [Addons](#addons)
+- [Custom addons](#custom-addons)
+- [Tagging](#tagging)
+- [Frequently Asked Questions](#frequently-asked-questions)
+    - [How to access Kuberntes Dashboard](#how-to-access-kuberntes-dashboard)
 
 <!-- /TOC -->
 
@@ -88,3 +89,13 @@ Custom addons can be added if needed. Fro every URL in the `addons` list, the in
 ## Tagging
 
 If you need to tag resources created by your Kubernetes cluster (EBS volumes, ELB load balancers etc.) check [this AWS Lambda function which can do the tagging](https://github.com/scholzj/aws-kubernetes-tagging-lambda).
+
+## Frequently Asked Questions
+
+### How to access Kuberntes Dashboard
+
+The Kubernetes Dashboard addon is by default not exposed to the internet. This is intentional for security reasons (no authentication / authorization) and to save costs for Amazon AWS ELB load balancer.
+
+You can access the dashboard easily fro any computer with installed and configured `kubectl`:
+1) From command line start `kubectl proxy`
+2) Go to your browser and open [http://127.0.0.1:8001/ui](http://127.0.0.1:8001/ui)
