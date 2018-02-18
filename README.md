@@ -1,6 +1,6 @@
 # AWS Minikube
 
-AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host and deploys Kubernetes cluster using [Kubeadm](https://kubernetes.io/docs/admin/kubeadm/) tool. It provides full integration with AWS. It is able to handle ELB load balancers, EBS disks, Route53 domains etc.
+AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 host and deploys the Kubernetes cluster using [Kubeadm](https://kubernetes.io/docs/admin/kubeadm/) tool. It provides full integration with AWS. It is also able to handle ELB load balancers, EBS disks, Route53 domains and other AWS resources.
 
 <!-- TOC depthFrom:2 -->
 
@@ -40,7 +40,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
 * **2.9.2017:** Update to Kubeadm and Kubernetes 1.7.5
 * **22.8.2017:** Update to Kubeadm and Kubernetes 1.7.4
 
-## Prerequisites and Dependencies
+## Prerequisites and Dependencies
 
 AWS Minikube deployes into an existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration to create one.
   * The VPC / subnet should be properly linked with Internet Gateway (IGW) and should have DNS and DHCP enabled.
