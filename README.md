@@ -5,7 +5,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 <!-- TOC depthFrom:2 -->
 
 - [Updates](#updates)
-- [Prerequisites and dependencies](#prerequisites-and-dependencies)
+- [Prerequisites and Dependencies](#prerequisites-and-dependencies)
 - [Configuration](#configuration)
 - [Creating AWS Minikube](#creating-aws-minikube)
 - [Deleting AWS Minikube](#deleting-aws-minikube)
@@ -17,31 +17,31 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 <!-- /TOC -->
 
-## Updates
+## Updates
 
-* *17.3.2018:* Update to Kubernetes 1.9.4
-* *10.2.2018:* Update to Kubernetes 1.9.3
-* *22.1.2018:* Update Calico to 3.0.1
-* *22.1.2018:* Update to Kubernetes 1.9.2, Ingres 0.10.0 and Dashboard 1.8.2
-* *6.1.2018:* Update to Kubernetes 1.9.1
-* *16.12.2017:* Update to Kubernetes 1.9.0, update Dashboard, Ingress and Heapster dependencies
-* *8.12.2017:* Update to Kubernetes 1.8.5
-* *1.12.2017:* Fix problems with incorrect Ingress RBAC rights
-* *28.11.2017:* Update addons (Heapster, Ingress, Dashboard, External DNS)
-* *23.11.2017:* Update to Kubernetes 1.8.4
-* *9.11.2017:* Update to Kubernetes 1.8.3
-* *4.11.2017:* Update to Kubernetes 1.8.2
-* *14.10.2017:* Update to Kubernetes 1.8.1
-* *29.9.2017:* Update to Kubernetes 1.8
-* *28.9.2017:* Updated addon versions
-* *26.9.2017:* Split into module and configuration
-* *23.9.2017:* Bootstrap cluster purely through cloud init to skip AWS S3
-* *18.9.2017:* Clarify the requirements for AWS infrastructure
-* *11.9.2017:* Make it possible to connect to the cluster through the Elastic IP address instead of DNS name
-* *2.9.2017:* Update to Kubeadm and Kubernetes 1.7.5
-* *22.8.2017:* Update to Kubeadm and Kubernetes 1.7.4
+* **17.3.2018:** Update to Kubernetes 1.9.4
+* **10.2.2018:** Update to Kubernetes 1.9.3
+* **22.1.2018:** Update Calico to 3.0.1
+* **22.1.2018:** Update to Kubernetes 1.9.2, Ingres 0.10.0 and Dashboard 1.8.2
+* **6.1.2018:** Update to Kubernetes 1.9.1
+* **16.12.2017:** Update to Kubernetes 1.9.0, update Dashboard, Ingress and Heapster dependencies
+* **8.12.2017:** Update to Kubernetes 1.8.5
+* **1.12.2017:** Fix problems with incorrect Ingress RBAC rights
+* **28.11.2017:** Update addons (Heapster, Ingress, Dashboard, External DNS)
+* **23.11.2017:** Update to Kubernetes 1.8.4
+* **9.11.2017:** Update to Kubernetes 1.8.3
+* **4.11.2017:** Update to Kubernetes 1.8.2
+* **14.10.2017:** Update to Kubernetes 1.8.1
+* **29.9.2017:** Update to Kubernetes 1.8
+* **28.9.2017:** Updated addon versions
+* **26.9.2017:** Split into module and configuration
+* **23.9.2017:** Bootstrap cluster purely through cloud init to skip AWS S3
+* **18.9.2017:** Clarify the requirements for AWS infrastructure
+* **11.9.2017:** Make it possible to connect to the cluster through the Elastic IP address instead of DNS name
+* **2.9.2017:** Update to Kubeadm and Kubernetes 1.7.5
+* **22.8.2017:** Update to Kubeadm and Kubernetes 1.7.4
 
-## Prerequisites and dependencies
+## Prerequisites and Dependencies
 
 AWS Minikube deployes into an existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration to create one.
   * The VPC / subnet should be properly linked with Internet Gateway (IGW) and should have DNS and DHCP enabled.
