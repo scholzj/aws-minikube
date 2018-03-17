@@ -1,6 +1,6 @@
 # AWS Minikube
 
-AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host and deploys Kubernetes cluster using [Kubeadm](https://kubernetes.io/docs/admin/kubeadm/) tool. It provides full integration with AWS. It is able to handle ELB load balancers, EBS disks, Route53 domains etc.
+AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 host and deploys the Kubernetes cluster using [Kubeadm](https://kubernetes.io/docs/admin/kubeadm/) tool. It provides full integration with AWS. It is also able to handle ELB load balancers, EBS disks, Route53 domains and other AWS resources.
 
 <!-- TOC depthFrom:2 -->
 
@@ -10,7 +10,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
 - [Creating AWS Minikube](#creating-aws-minikube)
 - [Deleting AWS Minikube](#deleting-aws-minikube)
 - [Addons](#addons)
-- [Custom addons](#custom-addons)
+- [Custom Addons](#custom-addons)
 - [Tagging](#tagging)
 - [Frequently Asked Questions](#frequently-asked-questions)
     - [How to access Kuberntes Dashboard](#how-to-access-kuberntes-dashboard)
@@ -43,7 +43,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
 
 ## Prerequisites and dependencies
 
-AWS Minikube deployes into existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration to create one.
+AWS Minikube deployes into an existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration to create one.
   * The VPC / subnet should be properly linked with Internet Gateway (IGW) and should have DNS and DHCP enabled.
   * Hosted DNS zone configured in Route53 (in case the zone is private you have to use IP address to copy `kubeconfig` and access the cluster).
 To deploy AWS Minikube there are no other dependencies apart from [Terraform](https://www.terraform.io). Kubeadm is used only on the EC2 host and doesn't have to be installed locally.
@@ -93,7 +93,7 @@ Currently, following addons are supported:
 
 The addons will be installed automatically based on the Terraform variables. 
 
-## Custom addons
+## Custom Addons
 
 Custom addons can be added if needed. Fro every URL in the `addons` list, the initialization scripts will automatically call `kubectl -f apply <Addon URL>` to deploy it. Minikube is using RBAC. So the custom addons have to be *RBAC ready*.
 
@@ -101,7 +101,7 @@ Custom addons can be added if needed. Fro every URL in the `addons` list, the in
 
 If you need to tag resources created by your Kubernetes cluster (EBS volumes, ELB load balancers etc.) check [this AWS Lambda function which can do the tagging](https://github.com/scholzj/aws-kubernetes-tagging-lambda).
 
-## Frequently Asked Questions
+## Frequently Asked Questions
 
 ### How to access Kuberntes Dashboard
 
