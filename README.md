@@ -19,6 +19,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Updates
 
+* **24.3.2018:** Update to Kubernetes 1.9.6
 * **17.3.2018:** Update to Kubernetes 1.9.4
 * **10.2.2018:** Update to Kubernetes 1.9.3
 * **22.1.2018:** Update Calico to 3.0.1
