@@ -9,6 +9,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 - [Configuration](#configuration)
 - [Creating AWS Minikube](#creating-aws-minikube)
 - [Deleting AWS Minikube](#deleting-aws-minikube)
+- [Using custom AMI Image](#using-custom-ami-image)
 - [Addons](#addons)
 - [Custom Addons](#custom-addons)
 - [Tagging](#tagging)
@@ -63,6 +64,7 @@ The configuration is done through Terraform variables. Example *tfvars* file is 
 | `aws_instance_type` | AWS EC2 instance type | `t2.medium` |
 | `ssh_public_key` | SSH key to connect to the remote machine | `~/.ssh/id_rsa.pub` |
 | `aws_subnet_id` | Subnet ID where minikube should run | `subnet-8d3407e5` |
+| `ami_image_id` | ID of the AMI image which should be used. If empty, the latest CentOS 7 image will be used. See README.md for AMI image requirements. | `ami-b81dbfc5` |
 | `hosted_zone` | DNS zone which should be used | `my-domain.com` |
 | `hosted_zone_private` | Is the DNS zone public or ptivate | `false` |
 | `addons` | List of addons which should be installed | `[ "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml" ]` |
@@ -85,6 +87,10 @@ To delete AWS Minikube,
 ```bash
 terraform destroy --var-file example.tfvars
 ```
+
+## Using custom AMI Image
+
+AWS Minikube is built and tested on CentOS 7. But gives you the possibility to use their own AMI images. Your custom AMI image should be based on RPM distribution and should be similar to Cent OS 7. When `ami_image_id` variable is not specified, the latest available CentOS 7 image will be used.
 
 ## Addons
 

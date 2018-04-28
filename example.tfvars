@@ -1,8 +1,8 @@
 # AWS region where should the Minikube be deployed
-aws_region    = "eu-central-1"
+aws_region = "eu-central-1"
 
 # Name for role, policy and cloud formation stack (without DBG-DEV- prefix)
-cluster_name  = "my-minikube"
+cluster_name = "my-minikube"
 
 # Instance type
 aws_instance_type = "t2.medium"
@@ -16,6 +16,9 @@ aws_subnet_id = "subnet-8a3517f8"
 # DNS zone where the domain is placed
 hosted_zone = "my-domain.com"
 hosted_zone_private = false
+
+# AMI image to use (if empty or not defined, latest CentOS 7 will be used)
+#ami_image_id = "ami-b81dbfc5"
 
 # Tags
 tags = {
