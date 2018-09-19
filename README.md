@@ -93,7 +93,7 @@ To delete AWS Minikube,
 terraform destroy --var-file example.tfvars
 ```
 
-## Using custom AMI Image
+## Using custom AMI Image
 
 AWS Minikube is built and tested on CentOS 7. But gives you the possibility to use their own AMI images. Your custom AMI image should be based on RPM distribution and should be similar to Cent OS 7. When `ami_image_id` variable is not specified, the latest available CentOS 7 image will be used.
 
@@ -110,7 +110,7 @@ The addons will be installed automatically based on the Terraform variables.
 
 ## Custom Addons
 
-Custom addons can be added if needed. Fro every URL in the `addons` list, the initialization scripts will automatically call `kubectl -f apply <Addon URL>` to deploy it. Minikube is using RBAC. So the custom addons have to be *RBAC ready*.
+Custom addons can be added if needed. From every URL in the `addons` list, the initialization scripts will automatically call `kubectl -f apply <Addon URL>` to deploy it. Minikube is using RBAC. So the custom addons have to be *RBAC ready*.
 
 ## Tagging
 
