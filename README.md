@@ -20,6 +20,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Updates
 
+* **9.11.2018** Update to Kubernetes 1.12.2, Update addons (Dashboard 1.10.0, Heapster 1.5.4, Ingress 0.20.0, External DNS 0.5.8)
 * **18.8.2018** Update to Kubernetes 1.11.2, Update addons (Dashboard 1.8.3, Heapster 1.5.3, Ingress 0.17.1, External DNS 0.5.4)
 * **28.6.2018:** Fix error when disabling already disabled SE Linux ([#1](https://github.com/scholzj/terraform-aws-minikube/pull/1))
 * **23.6.2018:** Update to Kubernetes 1.10.5
