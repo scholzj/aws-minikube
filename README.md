@@ -20,6 +20,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Updates
 
+* **8.12.2018** Update to Kubernetes 1.13.0, added storage class for `st1` HDD disks and upgrade to Ingress 0.21.0
 * **1.12.2018** Update to Kubernetes 1.12.3 and External DNS 0.5.9
 * **9.11.2018** Update to Kubernetes 1.12.2, Update addons (Dashboard 1.10.0, Heapster 1.5.4, Ingress 0.20.0, External DNS 0.5.8)
 * **18.8.2018** Update to Kubernetes 1.11.2, Update addons (Dashboard 1.8.3, Heapster 1.5.3, Ingress 0.17.1, External DNS 0.5.4)
