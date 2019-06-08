@@ -20,6 +20,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Updates
 
+* **8.6.2019** Update to Kubernetes 1.14.3, better SE Linux handling, SSH and API CIDR configuration (thats for the contributions)
 * **22.5.2019** Update to Kubernetes 1.14.2
 * **13.4.2019** Update to Kubernetes 1.14.1
 * **31.3.2019** Update to Kubernetes 1.14.0, Ingress 0.23.0, External DNS 0.5.12, Calico 3.6.1
@@ -85,6 +86,8 @@ The configuration is done through Terraform variables. Example *tfvars* file is 
 | `hosted_zone_private` | Is the DNS zone public or ptivate | `false` |
 | `addons` | List of addons which should be installed | `[ "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml" ]` |
 | `tags` | Tags which should be applied to all resources | `{ Hello = "World" }` |
+| `ssh_access_cidr` | Network CIDR from which SSH access will be allowed | `0.0.0.0/0` |
+| `api_access_cidr` | Network CIDR from which API access will be allowed | `0.0.0.0/0` |
 
 ## Creating AWS Minikube
 
