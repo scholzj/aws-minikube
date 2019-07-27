@@ -9,12 +9,12 @@ variable "cluster_name" {
 
 variable "tags" {
   description = "Tags used for the AWS resources created by this template"
-  type        = "map"
+  type        = map(string)
 }
 
 variable "addons" {
   description = "list of YAML files with Kubernetes addons which should be installed"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "aws_instance_type" {
@@ -44,3 +44,4 @@ variable "ami_image_id" {
   description = "ID of the AMI image which should be used. If empty, the latest CentOS 7 image will be used. See README.md for AMI image requirements."
   default     = ""
 }
+
