@@ -20,51 +20,52 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Updates
 
-* **24.8.2019** Update to Kubernetes 1.15.3, fix Ingress RBAC
-* **6.8.2019** Update to Kubernetes 1.15.2
-* **27.7.2019** Update to Kubernetes 1.15.1, upgrade addons and move to Terraform 0.12
-* **8.6.2019** Update to Kubernetes 1.14.3, better SE Linux handling, SSH and API CIDR configuration (thats for the contributions)
-* **22.5.2019** Update to Kubernetes 1.14.2
-* **13.4.2019** Update to Kubernetes 1.14.1
-* **31.3.2019** Update to Kubernetes 1.14.0, Ingress 0.23.0, External DNS 0.5.12, Calico 3.6.1
-* **2.3.2019** Update to Kubernetes 1.13.4 ([CVE-2019-1002100](https://github.com/kubernetes/kubernetes/issues/74534))
-* **3.2.2019** Update to Kubernetes 1.13.3
-* **19.1.2019** Update to Kubernetes 1.13.2
-* **28.12.2018** Update Kubernetes Dashboard to 1.10.1
-* **17.12.2018** Update to Kubernetes 1.13.1 and Calico 3.4.0
-* **8.12.2018** Update to Kubernetes 1.13.0, added storage class for `st1` HDD disks and upgrade to Ingress 0.21.0
-* **1.12.2018** Update to Kubernetes 1.12.3 and External DNS 0.5.9
-* **9.11.2018** Update to Kubernetes 1.12.2, Update addons (Dashboard 1.10.0, Heapster 1.5.4, Ingress 0.20.0, External DNS 0.5.8)
-* **18.8.2018** Update to Kubernetes 1.11.2, Update addons (Dashboard 1.8.3, Heapster 1.5.3, Ingress 0.17.1, External DNS 0.5.4)
-* **28.6.2018:** Fix error when disabling already disabled SE Linux ([#1](https://github.com/scholzj/terraform-aws-minikube/pull/1))
-* **23.6.2018:** Update to Kubernetes 1.10.5
-* **8.6.2018:** Update to Kubernetes 1.10.4
-* **27.5.2018:** Update to Kubernetes 1.10.3
-* **28.4.2018:** Update to Kubernetes 1.10.2, make AMI image configurable
-* **24.3.2018:** Update to Kubernetes 1.10.1
-* **31.3.2018:** Update to Kubernetes 1.10.0, update Calico networking and update Kubernetes Dahsboard, Ingress and Heapster addons
-* **24.3.2018:** Update to Kubernetes 1.9.6
-* **17.3.2018:** Update to Kubernetes 1.9.4
-* **10.2.2018:** Update to Kubernetes 1.9.3
-* **22.1.2018:** Update Calico to 3.0.1
-* **22.1.2018:** Update to Kubernetes 1.9.2, Ingres 0.10.0 and Dashboard 1.8.2
-* **6.1.2018:** Update to Kubernetes 1.9.1
-* **16.12.2017:** Update to Kubernetes 1.9.0, update Dashboard, Ingress and Heapster dependencies
-* **8.12.2017:** Update to Kubernetes 1.8.5
-* **1.12.2017:** Fix problems with incorrect Ingress RBAC rights
-* **28.11.2017:** Update addons (Heapster, Ingress, Dashboard, External DNS)
-* **23.11.2017:** Update to Kubernetes 1.8.4
-* **9.11.2017:** Update to Kubernetes 1.8.3
-* **4.11.2017:** Update to Kubernetes 1.8.2
-* **14.10.2017:** Update to Kubernetes 1.8.1
-* **29.9.2017:** Update to Kubernetes 1.8
-* **28.9.2017:** Updated addon versions
-* **26.9.2017:** Split into module and configuration
-* **23.9.2017:** Bootstrap cluster purely through cloud init to skip AWS S3
-* **18.9.2017:** Clarify the requirements for AWS infrastructure
-* **11.9.2017:** Make it possible to connect to the cluster through the Elastic IP address instead of DNS name
-* **2.9.2017:** Update to Kubeadm and Kubernetes 1.7.5
-* **22.8.2017:** Update to Kubeadm and Kubernetes 1.7.4
+* *21.9.2019* Update to Kubernetes 1.16, update addons and Calico
+* *24.8.2019* Update to Kubernetes 1.15.3, fix Ingress RBAC
+* *6.8.2019* Update to Kubernetes 1.15.2
+* *27.7.2019* Update to Kubernetes 1.15.1, upgrade addons and move to Terraform 0.12
+* *8.6.2019* Update to Kubernetes 1.14.3, better SE Linux handling, SSH and API CIDR configuration (thats for the contributions)
+* *22.5.2019* Update to Kubernetes 1.14.2
+* *13.4.2019* Update to Kubernetes 1.14.1
+* *31.3.2019* Update to Kubernetes 1.14.0, Ingress 0.23.0, External DNS 0.5.12, Calico 3.6.1
+* *2.3.2019* Update to Kubernetes 1.13.4 ([CVE-2019-1002100](https://github.com/kubernetes/kubernetes/issues/74534))
+* *3.2.2019* Update to Kubernetes 1.13.3
+* *19.1.2019* Update to Kubernetes 1.13.2
+* *28.12.2018* Update Kubernetes Dashboard to 1.10.1
+* *17.12.2018* Update to Kubernetes 1.13.1 and Calico 3.4.0
+* *8.12.2018* Update to Kubernetes 1.13.0, added storage class for `st1` HDD disks and upgrade to Ingress 0.21.0
+* *1.12.2018* Update to Kubernetes 1.12.3 and External DNS 0.5.9
+* *9.11.2018* Update to Kubernetes 1.12.2, Update addons (Dashboard 1.10.0, Heapster 1.5.4, Ingress 0.20.0, External DNS 0.5.8)
+* *18.8.2018* Update to Kubernetes 1.11.2, Update addons (Dashboard 1.8.3, Heapster 1.5.3, Ingress 0.17.1, External DNS 0.5.4)
+* *28.6.2018:* Fix error when disabling already disabled SE Linux ([#1](https://github.com/scholzj/terraform-aws-minikube/pull/1))
+* *23.6.2018:* Update to Kubernetes 1.10.5
+* *8.6.2018:* Update to Kubernetes 1.10.4
+* *27.5.2018:* Update to Kubernetes 1.10.3
+* *28.4.2018:* Update to Kubernetes 1.10.2, make AMI image configurable
+* *24.3.2018:* Update to Kubernetes 1.10.1
+* *31.3.2018:* Update to Kubernetes 1.10.0, update Calico networking and update Kubernetes Dahsboard, Ingress and Heapster addons
+* *24.3.2018:* Update to Kubernetes 1.9.6
+* *17.3.2018:* Update to Kubernetes 1.9.4
+* *10.2.2018:* Update to Kubernetes 1.9.3
+* *22.1.2018:* Update Calico to 3.0.1
+* *22.1.2018:* Update to Kubernetes 1.9.2, Ingres 0.10.0 and Dashboard 1.8.2
+* *6.1.2018:* Update to Kubernetes 1.9.1
+* *16.12.2017:* Update to Kubernetes 1.9.0, update Dashboard, Ingress and Heapster dependencies
+* *8.12.2017:* Update to Kubernetes 1.8.5
+* *1.12.2017:* Fix problems with incorrect Ingress RBAC rights
+* *28.11.2017:* Update addons (Heapster, Ingress, Dashboard, External DNS)
+* *23.11.2017:* Update to Kubernetes 1.8.4
+* *9.11.2017:* Update to Kubernetes 1.8.3
+* *4.11.2017:* Update to Kubernetes 1.8.2
+* *14.10.2017:* Update to Kubernetes 1.8.1
+* *29.9.2017:* Update to Kubernetes 1.8
+* *28.9.2017:* Updated addon versions
+* *26.9.2017:* Split into module and configuration
+* *23.9.2017:* Bootstrap cluster purely through cloud init to skip AWS S3
+* *18.9.2017:* Clarify the requirements for AWS infrastructure
+* *11.9.2017:* Make it possible to connect to the cluster through the Elastic IP address instead of DNS name
+* *2.9.2017:* Update to Kubeadm and Kubernetes 1.7.5
+* *22.8.2017:* Update to Kubeadm and Kubernetes 1.7.4
 
 ## Prerequisites and Dependencies
 
