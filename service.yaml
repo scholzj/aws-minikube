@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-cluster-kafka-0
+  annotations:
+    skupper.io/proxy: tcp
+spec:
+  ports:
+    - protocol: TCP
+      port: 9094
+      targetPort: 9094
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-cluster-kafka-1
+  annotations:
+    skupper.io/proxy: tcp
+spec:
+  ports:
+    - protocol: TCP
+      port: 9094
+      targetPort: 9094
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-cluster-kafka-2
+  annotations:
+    skupper.io/proxy: tcp
+spec:
+  ports:
+    - protocol: TCP
+      port: 9094
+      targetPort: 9094
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-cluster-kafka-external-bootstrap
+  annotations:
+    skupper.io/proxy: tcp
+spec:
+  ports:
+    - protocol: TCP
+      port: 9094
+      targetPort: 9094
