@@ -4,4 +4,7 @@
 *.tfstate.*.backup
 .terraform
 jakub.tfvars
+kafka.tfvars
 kubeconfig*
+.kubeconfig
+kuard.yaml
