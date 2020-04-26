@@ -1,5 +1,5 @@
 module "minikube" {
-  source = "../terraform-aws-minikube/"
+  source = "scholzj/minikube/aws"
 
   aws_region          = var.aws_region
   cluster_name        = var.cluster_name
