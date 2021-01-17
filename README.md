@@ -20,6 +20,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Updates
 
+* *17.1.2021* Update to Kubernetes 1.20.2
 * *19.12.2020* Update to Kubernetes 1.20.1
 * *18.12.2020* Update to Kubernetes 1.20.0, update add-ons, move to Containerd runtime
 * *23.11.2020* Update to Kubernetes 1.19.4
