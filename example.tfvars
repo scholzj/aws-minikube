@@ -29,6 +29,7 @@ tags = {
 # Supported addons:
 # 
 # https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/storage-class.yaml
+# https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/csi-driver.yaml
 # https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/heapster.yaml
 # https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml
 # https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml
@@ -37,6 +38,7 @@ tags = {
 
 addons = [
   "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/storage-class.yaml",
+  "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/csi-driver.yaml",
   "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/metrics-server.yaml",
   "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml",
   "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml"

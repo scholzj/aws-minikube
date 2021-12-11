@@ -145,7 +145,7 @@ AWS Minikube is built and tested on CentOS 7. But gives you the possibility to u
 Currently, following addons are supported:
 * Kubernetes dashboard
 * Heapster for resource monitoring
-* Storage class for automatic provisioning of persisitent volumes
+* Storage class and CSI driver for automatic provisioning of persistent volumes
 * External DNS
 * Ingress
 
