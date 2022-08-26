@@ -10,22 +10,23 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 - [Creating AWS Minikube](#creating-aws-minikube)
 - [Deleting AWS Minikube](#deleting-aws-minikube)
 - [Using custom AMI Image](#using-custom-ami-image)
-- [Addons](#addons)
-- [Custom Addons](#custom-addons)
+- [Add-ons](#addons)
+- [Custom Add-ons](#custom-addons)
 - [Tagging](#tagging)
 - [Frequently Asked Questions](#frequently-asked-questions)
-    - [How to access Kuberntes Dashboard](#how-to-access-kuberntes-dashboard)
+    - [How to access Kubernetes Dashboard](#how-to-access-kuberntes-dashboard)
 
 <!-- /TOC -->
 
 ## Updates
 
+* *26.8.2022* Update to Kubernetes 1.25.0 + Calico upgrade
 * *21.8.2022* Update to Kubernetes 1.24.4
 * *16.7.2022* Update to Kubernetes 1.24.3
 * *27.6.2022* Update to Kubernetes 1.24.2
-* *11.6.2022* Update to Kubernetes 1.24.1 + update addons + remove dependency on the template provider
-* *8.5.2022* Update to Kubernetes 1.24.0 + update addons
-* *23.3.2022* Update to Kubernetes 1.23.5 + update addons
+* *11.6.2022* Update to Kubernetes 1.24.1 + update add-ons + remove dependency on the template provider
+* *8.5.2022* Update to Kubernetes 1.24.0 + update add-ons
+* *23.3.2022* Update to Kubernetes 1.23.5 + update add-ons
 * *19.2.2022* Update to Kubernetes 1.23.4
 * *12.2.2022* Update to Kubernetes 1.23.2
 * *29.12.2021* Update to Kubernetes 1.23.1
@@ -33,14 +34,14 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Prerequisites and Dependencies
 
-AWS Minikube deployes into an existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration to create one.
+AWS Minikube deploys into an existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration to create one.
   * The VPC / subnet should be properly linked with Internet Gateway (IGW) and should have DNS and DHCP enabled.
   * Hosted DNS zone configured in Route53 (in case the zone is private you have to use IP address to copy `kubeconfig` and access the cluster).
 To deploy AWS Minikube there are no other dependencies apart from [Terraform](https://www.terraform.io). Kubeadm is used only on the EC2 host and doesn't have to be installed locally.
 
 ## Configuration
 
-The configuration is done through Terraform variables. Example *tfvars* file is part of this repo and is named `example.tfvars`. Change the variables to match your environment / requirements before running `terraform apply ...`.
+The configuration is done through Terraform variables. Example `tfvars` file is part of this repo and is named `example.tfvars`. Change the variables to match your environment / requirements before running `terraform apply ...`.
 
 | Option | Explanation | Example |
 |--------|-------------|---------|
@@ -48,11 +49,11 @@ The configuration is done through Terraform variables. Example *tfvars* file is 
 | `cluster_name` | Name of the Kubernetes cluster (also used to name different AWS resources) | `my-minikube` |
 | `aws_instance_type` | AWS EC2 instance type | `t2.medium` |
 | `ssh_public_key` | SSH key to connect to the remote machine | `~/.ssh/id_rsa.pub` |
-| `aws_subnet_id` | Subnet ID where minikube should run | `subnet-8d3407e5` |
-| `ami_image_id` | ID of the AMI image which should be used. If empty, the latest CentOS 7 image will be used. See README.md for AMI image requirements. | `ami-b81dbfc5` |
+| `aws_subnet_id` | Subnet ID where Minikube should run | `subnet-8d3407e5` |
+| `ami_image_id` | ID of the AMI image which should be used. If empty, the latest CentOS 7 image will be used. See `README.md` for AMI image requirements. | `ami-b81dbfc5` |
 | `hosted_zone` | DNS zone which should be used | `my-domain.com` |
-| `hosted_zone_private` | Is the DNS zone public or ptivate | `false` |
-| `addons` | List of addons which should be installed | `[ "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml" ]` |
+| `hosted_zone_private` | Is the DNS zone public or private | `false` |
+| `addons` | List of add-ons which should be installed | `[ "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml" ]` |
 | `tags` | Tags which should be applied to all resources | `{ Hello = "World" }` |
 | `ssh_access_cidr` | Network CIDR from which SSH access will be allowed | `0.0.0.0/0` |
 | `api_access_cidr` | Network CIDR from which API access will be allowed | `0.0.0.0/0` |
@@ -79,20 +80,20 @@ terraform destroy --var-file example.tfvars
 
 AWS Minikube is built and tested on CentOS 7. But gives you the possibility to use their own AMI images. Your custom AMI image should be based on RPM distribution and should be similar to Cent OS 7. When `ami_image_id` variable is not specified, the latest available CentOS 7 image will be used.
 
-## Addons
+## Add-ons
 
-Currently, following addons are supported:
+Currently, following add-ons are supported:
 * Kubernetes dashboard
 * Heapster for resource monitoring
 * Storage class and CSI driver for automatic provisioning of persistent volumes
 * External DNS
 * Ingress
 
-The addons will be installed automatically based on the Terraform variables. 
+The add-ons will be installed automatically based on the Terraform variables. 
 
-## Custom Addons
+## Custom Add-ons
 
-Custom addons can be added if needed. From every URL in the `addons` list, the initialization scripts will automatically call `kubectl -f apply <Addon URL>` to deploy it. Minikube is using RBAC. So the custom addons have to be *RBAC ready*.
+Custom add-ons can be added if needed. From every URL in the `addons` list, the initialization scripts will automatically call `kubectl -f apply <Addon URL>` to deploy it. Minikube is using RBAC. So the custom add-ons have to be *RBAC ready*.
 
 ## Tagging
 
@@ -100,9 +101,9 @@ If you need to tag resources created by your Kubernetes cluster (EBS volumes, EL
 
 ## Frequently Asked Questions
 
-### How to access Kuberntes Dashboard
+### How to access Kubernetes Dashboard
 
-The Kubernetes Dashboard addon is by default not exposed to the internet. This is intentional for security reasons (no authentication / authorization) and to save costs for Amazon AWS ELB load balancer.
+The Kubernetes Dashboard add-on is by default not exposed to the internet. This is intentional for security reasons (no authentication / authorization) and to save costs for Amazon AWS ELB load balancer.
 
 You can access the dashboard easily fro any computer with installed and configured `kubectl`:
 1) From command line start `kubectl proxy`

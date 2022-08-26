@@ -8,3 +8,4 @@ kafka.tfvars
 kubeconfig*
 .kubeconfig
 kuard.yaml
+.vscode
