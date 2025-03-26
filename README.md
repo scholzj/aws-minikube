@@ -20,6 +20,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Updates
 
+* *26.3.2023* Update to use CentOS 10 and CRI-O
 * *16.6.2024* Update to Kubernetes 1.30.2
 * *19.5.2024* Update to Kubernetes 1.30.1 + Ingress and External DNS add-on updates
 * *29.4.2024* Update to Kubernetes 1.30.0
@@ -84,7 +85,7 @@ terraform destroy --var-file example.tfvars
 
 ## Using custom AMI Image
 
-AWS Minikube is built and tested on CentOS 7. But gives you the possibility to use their own AMI images. Your custom AMI image should be based on RPM distribution and should be similar to Cent OS 7. When `ami_image_id` variable is not specified, the latest available CentOS 7 image will be used.
+AWS Minikube is built and tested on CentOS 10. But gives you the possibility to use their own AMI images. Your custom AMI image should be based on RPM distribution and should be similar to Cent OS 10. When `ami_image_id` variable is not specified, the latest available CentOS 10 image will be used.
 
 ## Add-ons
 
