@@ -20,6 +20,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Updates
 
+* *7.4.2023* Update to Kube 1.32 and move from Calico to Flannel
 * *26.3.2023* Update to use CentOS 10 and CRI-O
 * *16.6.2024* Update to Kubernetes 1.30.2
 * *19.5.2024* Update to Kubernetes 1.30.1 + Ingress and External DNS add-on updates
@@ -57,7 +58,7 @@ The configuration is done through Terraform variables. Example `tfvars` file is 
 | `aws_instance_type` | AWS EC2 instance type | `t2.medium` |
 | `ssh_public_key` | SSH key to connect to the remote machine | `~/.ssh/id_rsa.pub` |
 | `aws_subnet_id` | Subnet ID where Minikube should run | `subnet-8d3407e5` |
-| `ami_image_id` | ID of the AMI image which should be used. If empty, the latest CentOS 7 image will be used. See `README.md` for AMI image requirements. | `ami-b81dbfc5` |
+| `ami_image_id` | ID of the AMI image which should be used. If empty, the latest CentOS 10 image will be used. See `README.md` for AMI image requirements. | `ami-099991f9035126091` |
 | `hosted_zone` | DNS zone which should be used | `my-domain.com` |
 | `hosted_zone_private` | Is the DNS zone public or private | `false` |
 | `addons` | List of add-ons which should be installed | `[ "https://raw.githubusercontent.com/scholzj/aws-minikube/master/addons//storage-class.yaml" ]` |
@@ -91,7 +92,6 @@ AWS Minikube is built and tested on CentOS 10. But gives you the possibility to 
 
 Currently, following add-ons are supported:
 * Kubernetes dashboard
-* Heapster for resource monitoring
 * Storage class and CSI driver for automatic provisioning of persistent volumes
 * External DNS
 * Ingress
@@ -114,4 +114,4 @@ The Kubernetes Dashboard add-on is by default not exposed to the internet. This 
 
 You can access the dashboard easily fro any computer with installed and configured `kubectl`:
 1) From command line start `kubectl proxy`
-2) Go to your browser and open [http://127.0.0.1:8001/ui](http://127.0.0.1:8001/ui)
+2) Go to your browser and open [http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=default](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=default)

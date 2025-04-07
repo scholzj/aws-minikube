@@ -17,8 +17,8 @@ aws_subnet_id = "subnet-8a3517f8"
 hosted_zone = "my-domain.com"
 hosted_zone_private = false
 
-# AMI image to use (if empty or not defined, latest CentOS 7 will be used)
-#ami_image_id = "ami-b81dbfc5"
+# AMI image to use (if empty or not defined, latest CentOS 10 will be used)
+#ami_image_id = "ami-099991f9035126091"
 
 # Tags
 tags = {
@@ -29,8 +29,6 @@ tags = {
 # Supported addons:
 # 
 # https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/storage-class.yaml
-# https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/csi-driver.yaml
-# https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/heapster.yaml
 # https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml
 # https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml
 # https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/ingress.yaml (External ELB load balancer)
@@ -38,7 +36,6 @@ tags = {
 
 addons = [
   "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/storage-class.yaml",
-  "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/csi-driver.yaml",
   "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/metrics-server.yaml",
   "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml",
   "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml"

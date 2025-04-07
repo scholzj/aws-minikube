@@ -22,3 +22,7 @@ output "copy_config_ip" {
   value       = "To copy the kubectl config file using IP address, run: 'scp ${module.minikube.ssh_user}@${module.minikube.public_ip}:${module.minikube.kubeconfig_ip} .kubeconfig'"
 }
 
+output "ssh_command" {
+  description = "Command for SSHing to the host"
+  value       = "To SSH to the host, run: 'ssh ${module.minikube.ssh_user}@${module.minikube.public_ip}'"
+}
