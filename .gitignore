@@ -3,6 +3,7 @@
 *.tfstate.backup
 *.tfstate.*.backup
 .terraform
+.terraform.*
 jakub.tfvars
 kafka.tfvars
 kubeconfig*
