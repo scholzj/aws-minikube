@@ -22,9 +22,10 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Updates
 
-* *13.4.2023* Update to OpenTofu and rework the addons
-* *7.4.2023* Update to Kube 1.32 and move from Calico to Flannel
-* *26.3.2023* Update to use CentOS 10 and CRI-O
+* *5.6.2025* Update to Kube 1.33.1 and CRI-O 1.33.0
+* *13.4.2025* Update to OpenTofu and rework the addons
+* *7.4.2025* Update to Kube 1.32 and move from Calico to Flannel
+* *26.3.2025* Update to use CentOS 10 and CRI-O
 * *16.6.2024* Update to Kubernetes 1.30.2
 * *19.5.2024* Update to Kubernetes 1.30.1 + Ingress and External DNS add-on updates
 * *29.4.2024* Update to Kubernetes 1.30.0
