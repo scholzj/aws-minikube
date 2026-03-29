@@ -22,6 +22,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates an EC2 ho
 
 ## Updates
 
+* *23.3.2026* Update to Kube 1.35.3 and CRI-O 1.35.1
 * *28.12.2025* Update to Kube 1.35.0 and CRI-O 1.35.0
 * *15.12.2025* Update to Kube 1.34.3 and CRI-O 1.34.3
 * *20.11.2025* Update to Kube 1.34.2 and CRI-O 1.34.2
